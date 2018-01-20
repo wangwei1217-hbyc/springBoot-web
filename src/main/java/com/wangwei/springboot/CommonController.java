@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.xml.ws.RespectBinding;
 import java.util.ArrayList;
 
 /**
@@ -31,9 +32,20 @@ import java.util.ArrayList;
 @RequestMapping("/common")
 public class CommonController {
 
+    @RequestMapping(value = "/error")
+    public String error(){
+        throw new IllegalArgumentException("IllegalArgumentException错误");
+    }
+
+    @RequestMapping(value = "/error2")
+    public String error2(){
+        throw new NullPointerException("NullPointerException错误");
+    }
+
     @RequestMapping(value = "/index")
     @ResponseBody
     public String index(){
+        System.out.println("==common index===");
         return "success";
     }
     /**jsp**/
