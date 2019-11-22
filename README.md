@@ -1,2 +1,26 @@
-# springBoot-web
-springBoot-web
+### springBoot运行流程
+1.判断是否是Web环境。<br/>
+2.加载所有classpath下META-INF/spring.factories文件里面所配置的ApplicationContextInitializer.<br>
+3.加载所有classpath下META-INF/spring.factories文件里面所配置的ApplicationListener.<br>
+4.推断main方法所在的类.<br>
+5.开始执行run()方法.<br>
+6.设置“java.awt.headless”系统变量.<br>
+7.加载所有classpath下META-INF/spring.factories文件里面所配置的SpringApplicationRunListener.<br>
+8.执行所有SpringApplicationRunListener的started()方法.<br>
+9.实例化ApplicationArguments对象.<br>
+10.创建Environment.<br>
+11.配置Environment，主要是把run方法的参数配置到Environment.<br>
+12.执行所有SpringApplicationRunListener的environmentPrepared()方法.<br>
+13.如果不是Web环境，但是却是Web的environment，则把这个Web的environment转换成标准的environment.<br>
+14.打印Banner信息.<br>
+15.初始化ApplicationContext，如果是Web环境，则实例化AnnotationConfigEmbeddedWebApplicationContext对象,
+   否则实例化AnnotationConfigApplicationContext对象.<br>
+16.如果beanNameGenerator不为空，就把beanNameGenerator对象注入到context中去.<br>
+17.回调所有ApplicationContextInitializer中的回调方法.<br>
+18.执行所有SpringApplicationRunListener的contextPrepared()方法.<br>
+19.依次往Spring容器中注入：ApplicationArguments、Banner.<br>
+20.加载所有的源(sources)到context中去.<br>
+21.执行所有SpringApplicationRunListener的contextLoaded()方法.<br>
+22.执行context的refresh()方法，并且调用context的registerShutdownHook()方法.<br>
+23.回调，获取容器中所有的ApplicationRunner、CommandLineRunner接口，然后排序，依次调用.<br>
+24.执行所有SpringApplicationRunListener的finished()方法.<br>

@@ -15,38 +15,39 @@ public class UserDao {
     @Resource
     private JdbcTemplate jdbcTemplate;
 
-    public void add(String name){
+    public void add(String name) {
         String sql = "insert into t_user(name) values(?)";
-        jdbcTemplate.update(sql,name);
+        jdbcTemplate.update(sql, name);
     }
 
     /**
-     *rollbackFor--指定哪些异常会回滚
+     * rollbackFor--指定哪些异常会回滚
      */
     @Transactional(rollbackFor = {Exception.class})
-    public void add2(String name) throws Exception{
+    public void add2(String name) throws Exception {
         String sql = "insert into t_user(name) values(?)";
-        jdbcTemplate.update(sql,name);
+        jdbcTemplate.update(sql, name);
         throw new FileNotFoundException();
     }
 
     @Transactional
-    public void add3(String name) throws Exception{
+    public void add3(String name) throws Exception {
         String sql = "insert into t_user(name) values(?)";
-        jdbcTemplate.update(sql,name);
+        jdbcTemplate.update(sql, name);
         throw new RuntimeException();
     }
+
     /**
      * noRollbackFor--指定针对哪些异常不进行回滚
      */
     @Transactional(noRollbackFor = {IllegalArgumentException.class})
-    public void add4(String name) throws Exception{
+    public void add4(String name) throws Exception {
         String sql = "insert into t_user(name) values(?)";
-        jdbcTemplate.update(sql,name);
+        jdbcTemplate.update(sql, name);
         throw new IllegalArgumentException();
     }
 
-    public void addUser(String name) throws Exception{
+    public void addUser(String name) throws Exception {
         add3(name);
     }
 }

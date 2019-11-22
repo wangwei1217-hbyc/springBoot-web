@@ -3,7 +3,9 @@ package com.wangwei.springboot;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.web.ErrorMvcAutoConfiguration;
+import org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext;
 import org.springframework.boot.web.servlet.ServletComponentScan;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
 /**
@@ -98,6 +100,5 @@ public void registerErrorPages(ErrorPageRegistry registry) {
 public class App {
     public static void main(String[] args) {
         SpringApplication.run(App.class,args);
-
     }
 }

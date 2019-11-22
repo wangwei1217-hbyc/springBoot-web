@@ -10,7 +10,7 @@ import redis.clients.jedis.Jedis;
  * Created by wangwei on 2018/3/18.
  */
 @SpringBootApplication
-//@EnableRedis
+@EnableRedis
 public class App2 {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(App2.class, args);
