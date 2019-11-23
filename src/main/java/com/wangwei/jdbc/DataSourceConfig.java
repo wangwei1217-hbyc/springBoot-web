@@ -9,7 +9,7 @@ import org.springframework.core.env.Environment;
 import javax.sql.DataSource;
 
 /**
- * Created by wangwei on 2018/1/18.
+ *
  */
 @SpringBootConfiguration
 public class DataSourceConfig {

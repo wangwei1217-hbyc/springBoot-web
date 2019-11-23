@@ -21,7 +21,26 @@ import java.sql.Connection;
 
  这样做之后，SpringBoot会自动装配好DataSource、JdbcTemplate对象
 
- SpringBoot默认支持数据源，参见DataSourceAutoConfiguration
+ SpringBoot默认支持数据源：Tomcat-jdbc、HikariCP、dbcp、dbcp2，参见DataSourceAutoConfiguration.
+
+ 也可以使用自定义的第三方数据源:如druid,步骤：
+    -引入druid的依赖：
+     <dependency>
+     <groupId>com.alibaba</groupId>
+     <artifactId>druid</artifactId>
+     <version>1.1.6</version>
+     </dependency>
+   -写一个配置类，自己装配一个DataSource对象
+     @Bean
+     public DataSource createDataSource(){
+     DruidDataSource druidDataSource = new DruidDataSource();
+     druidDataSource.setDriverClassName(environment.getProperty("spring.datasource.driverClassName"));
+     druidDataSource.setUrl(environment.getProperty("spring.datasource.url"));
+     druidDataSource.setUsername(environment.getProperty("spring.datasource.username"));
+     druidDataSource.setPassword(environment.getProperty("spring.datasource.password"));
+     return druidDataSource;
+     }
+
 
  SpringBoot事物：
  1)只能对RuntimeException及其子类，事物才有效，否则不生效。如throw new FileNotFoundException();

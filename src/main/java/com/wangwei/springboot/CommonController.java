@@ -22,7 +22,7 @@ import java.util.ArrayList;
         spring.mvc.view.suffix=.jsp
 
     注意：SpringBoot中同时只支持一种渲染方式.
-        如果项使用FreeMarker模版方式渲染页面，需要注掉jsp的相关配置，同时引入freemarker的依赖
+        如果想使用FreeMarker模版方式渲染页面，需要注掉jsp的相关配置，同时引入freemarker的依赖
          <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
