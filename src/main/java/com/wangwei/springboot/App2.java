@@ -9,15 +9,17 @@ import redis.clients.jedis.Jedis;
 /**
  * Created by wangwei on 2018/3/18.
  */
-@SpringBootApplication
-@EnableRedis
+@SpringBootApplication()
+//@EnableRedis
 public class App2 {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(App2.class, args);
         Jedis jedis = context.getBean(Jedis.class);
         System.out.println(jedis);
-//        jedis.set("huying","wangwei");
+        jedis.set("huying","wangwei");
+        jedis.set("wangwei","huying");
         System.out.println(jedis.get("huying")+" love "+jedis.get("wangwei")+" forever!");
+        jedis.close();
         context.close();
     }
 }

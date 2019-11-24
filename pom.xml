@@ -26,7 +26,7 @@
     </dependencyManagement>
     <dependencies>
         <dependency>
-            <groupId>com.wangwei.study</groupId>
+            <groupId>com.wangwei</groupId>
             <artifactId>spring-boot-starter-redis</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
